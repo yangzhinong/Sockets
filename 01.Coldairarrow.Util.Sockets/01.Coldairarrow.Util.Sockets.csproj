@@ -46,6 +46,7 @@
     <Compile Include="SocketClient.cs" />
     <Compile Include="SocketConnection.cs" />
     <Compile Include="SocketServer.cs" />
+    <Compile Include="StateObject.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

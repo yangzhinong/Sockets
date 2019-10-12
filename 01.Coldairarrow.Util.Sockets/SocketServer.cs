@@ -64,10 +64,9 @@ namespace Coldairarrow.Util.Sockets
                             HandleSendMsg = HandleSendMsg == null ? null : new Action<byte[], SocketConnection, SocketServer>(HandleSendMsg),
                             HandleException = HandleException == null ? null : new Action<Exception>(HandleException)
                         };
-
-                        newConnection.StartRecMsg();
                         AddConnection(newConnection);
                         HandleNewClientConnected?.BeginInvoke(this, newConnection, null, null);
+                        newConnection.StartRecMsg();
                     }
                     catch (Exception ex)
                     {

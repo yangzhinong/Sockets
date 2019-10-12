@@ -30,8 +30,13 @@ namespace Console_Client
 
             while (true)
             {
-                Console.WriteLine("输入:quit关闭客户端，输入其它消息发送到服务器");
+                Console.WriteLine("输入:quit关闭客户端,r重试连接服务器，输入其它消息发送到服务器");
                 string str = Console.ReadLine();
+                if (str == "r")
+                {
+                    client.StartClient();
+                    break;
+                }
                 if (str == "quit")
                 {
                     client.Close();
@@ -39,7 +44,14 @@ namespace Console_Client
                 }
                 else
                 {
-                    client.Send(str);
+                    if (client.IsConnectToServer)
+                    {
+                        client.SendData(str);
+                    } else
+                    {
+                        Console.WriteLine("未连接到服务器");
+                    }
+                     
                 }
             }
         }
